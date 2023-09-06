@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(11, 36, 71);
+    width: 100%;
+    padding: 0;
+}
+.cabeca{
+    width: 100%;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.cabeca div {
+    color: white;
+    float: left;
+    background: linear-gradient(#f1ca84, #ecb251);
+}
+#cd1{
+    width: 33%;
+}
+#cd2{
+    width: 33%;
+    border: solid;
+}
+#cd3{
+    width: 33%;
+
+}
