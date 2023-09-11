@@ -14,9 +14,11 @@ body{
     float: left;
     background: linear-gradient(#f1ca84, #ecb251);
 }
+
 #cd1{
     width: 33%;
 }
+
 #cd2{
     width: 33%;
     border: solid;
