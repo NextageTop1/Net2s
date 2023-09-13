@@ -13,40 +13,41 @@ header{
 }
 header div {
     color: white;
-    /* display: inline-block; */
     width: 33%;
     text-align: center;
     float: left;
 }
 header #div2{
-    border: solid 1px;
-    /* border-bottom: 2px solid #ffee01; */
     height: 100%;
-    display: flex;
+    display: inline-flex;
     justify-content: space-between;
     align-items: center;
 }
-
-header #div .formulario{
-    border-radius: 5px;
-    width: 90%;
-    /* display: inline-block; */
-    float: left;
+header div img{
+    width: 20%;
 }
-
-header img{
-    display: inline-block;
-    width: 30%;
-}
-
 input, ion-icon{
     float: left;
 }
-
 input[type="text"]  {
     width: 90%;
     border: 1px solid;
+    border-radius: 10px;
     background: transparent;
     /* outline: none; */
-    color: rgb(255, 255, 255);
+    color: beige;
+    margin-right: 1%;
+    box-shadow:-1px 0 0.4em rgb(156, 156, 4);
+
+}
+.formulario{
+    margin: 0 auto;
+    width: 100%;
+}
+#login{
+    display: inline-block;
+    position: relative;
+    left: 70%;
+    margin-top: 10%;
+    font-size: larger;
 }
