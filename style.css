@@ -69,12 +69,17 @@ main section img{
     width: 100%;
     height: 550px;
     box-shadow:-1px 0 0.4em rgb(0, 0, 0);
+    transition: 0.2s;
+}
+main section img:hover{
+    transform: scale(1.01);
 }
 .tenis div{
     margin-top: 1% ;
     float: left;
-    width: 24.8%;
+    width: 24.5%;
     height: 400px;
+    margin-left: 0.5%;
 }
 .tenis div img{
     width: 100%;
