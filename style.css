@@ -6,6 +6,20 @@ body{
     font-size: medium;
     text-align: center;
 }
+
+.col1{width: 8.33%;}
+.col2{width: 16.66%;}
+.col3{width: 24.9%;}
+.col4{width: 33.33%;}
+.col5{width: 41.65%;}
+.col6{width: 50%;}
+.col7{width: 58.3%;}
+.col8{width: 66.64%;}
+.col9{width: 75%;}
+.col10{width: 83.3%;}
+.col11{width: 92%;}
+.cpl12{width: 100%;}
+
 header{
     width: 100%;
     color: white;
@@ -19,7 +33,7 @@ header div {
     text-align: center;
     float: left;
 }
-header #div2{
+.div2{
     height: 100%;
     display: inline-flex;
     justify-content: space-between;
@@ -74,6 +88,7 @@ main section img{
 main section img:hover{
     transform: scale(1.01);
 }
+main .col2{float: left;}
 .tenis div{
     margin-top: 1% ;
     float: left;
@@ -84,4 +99,7 @@ main section img:hover{
 .tenis div img{
     width: 100%;
     height: 100%;
+}
+.descricao{
+    text-align: center;;
 }
