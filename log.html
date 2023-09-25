@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -13,28 +13,39 @@
             <a href="index.html"><img src="fotos/Design sem nome (3).png" alt=""></a>
         </div>
         <div id="div2">
-            <div class="formulario">
-                <form action="">
-                    <input type="text" placeholder="O que você procura?">
-                    <ion-icon name="search-outline"></ion-icon>
-                </form>
-            </div>
+                <h1>Cadastrar/Entrar</h1>
         </div>
         <div>
             <a href="log/log.html"><img src="/fotos/login.png" alt="" id="login"></a>
         </div>
     </header>
-    <div class="page">
-        <form method="POST" class="formLogin">
-            <h1>Login</h1>
-            <p>Digite os seus dados de acesso no campo abaixo.</p>
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
-            <label for="password">Senha</label>
-            <input type="password" placeholder="Digite seu e-mail" />
-            <a href="/">Esqueci minha senha</a>
-            <input type="submit" value="Acessar" class="btn" />
-        </form>
+    <div class="col11">
+        <div class="Log">
+            <form method="POST" class="formLogin">
+                <h1>Entrar</h1>
+                <p>Digite os seus dados de acesso no campo abaixo.</p>
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
+                <label for="password">Senha</label>
+                <input type="password" placeholder="Digite sua senha" />
+                <input type="submit" value="Acessar" class="btn" />
+                <a href="/">Esqueci minha senha</a>
+            </form>
+        </div>
     </div>
+        <div class="col5">
+        <div class="Cads">
+            <form method="POST" class="formCadastrar">
+                <h1>Cadastrar</h1>
+                <p>Digite os seus dados de acesso no campo abaixo.</p>
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
+                <label for="password">Senha</label>
+                <input type="password" placeholder="Digite sua senha" />
+                <input type="submit" value="Calcular" class="btn" />
+            </form>
+        </div>
+        </div>
+
 </body>
 </html>

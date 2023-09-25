@@ -18,7 +18,7 @@ body{
 .col9{width: 75%;}
 .col10{width: 83.3%;}
 .col11{width: 92%;}
-.cpl12{width: 100%;}
+.col12{width: 100%;}
 
 header{
     width: 100%;
@@ -121,8 +121,6 @@ main .col6 img{
     width: 100%;
     margin: 0 auto;
     margin-top: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
@@ -148,9 +146,103 @@ main .col6 img{
     width: 100%;
     padding: 10px;
     background-color: #008cba;
-    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+}
+header #div2{
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+.Log{
+    float: right;
+    width: 39%;
+    padding-top: 40px;
+}
+
+.Cads{
+    margin-left: 20% ;
+    padding-top: 40px;
+
+}
+   
+ input{
+    padding: 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+.btn{
+    background-color: dodgerblue;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    height: 50px;
+    
+}
+.btn:hover{
+    background-color: deepskyblue;
+    cursor: pointer;
+}
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    font-size: 24px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.rating label:before {
+    content: "\2605"; /* Estrela vazia: ☆ */
+}
+
+.rating input[type="radio"]:checked ~ label:before {
+    content: "\2605"; /* Estrela cheia: ★ */
+    color: gold;
+}
+
+.rating label:before {
+    content: "\2605"; /* Estrela vazia: ☆ */
+}
+
+.rating input[type="radio"]:checked ~ label:before {
+    content: "\2605"; /* Estrela cheia: ★ */
+    color: gold;
+}
+
+section button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.col11 form{
+    float: right;
 }
