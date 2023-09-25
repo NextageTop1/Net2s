@@ -48,7 +48,7 @@ input, ion-icon{
 }
 input[type="text"]  {
     width: 90%;
-    height: 24px;
+    height: 2px;
     border: 1px solid;
     border-radius: 10px;
     background: white;
@@ -73,7 +73,6 @@ input[type="text"]  {
 }
 #as {
     background-color: yellow;
-    height: 30px;
 }
 main{
     width: 100%;
@@ -142,7 +141,6 @@ main .col6 img{
     margin-left: -1em;
 }
 
-}
 header #div2{
     display: flex;
     justify-content: center;
@@ -188,41 +186,6 @@ input{
     margin: 0 auto;
     text-align: center;
 }
-
-h1 {
-    font-size: 24px;
-}
-
-.rating {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.rating input[type="radio"] {
-    display: none;
-}
-
-.rating label {
-    font-size: 24px;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.rating label:before {
-    content: "\2605"; /* Estrela vazia: ☆ */
-}
-
-
-.rating label:before {
-    content: "\2605"; /* Estrela vazia: ☆ */
-}
-
-.rating input[type="radio"]:checked ~ label:before {
-    content: "\2605"; /* Estrela cheia: ★ */
-    color: gold;
-}
-
 section button {
     display: block;
     margin: 20px auto;
@@ -235,7 +198,26 @@ section button {
 .col8 form{
     float: right;
 }
-.col4 img{
-    width: ;
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
 
+.slide {
+    display: none;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
 }
