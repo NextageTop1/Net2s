@@ -44,24 +44,19 @@
     </main>
     <section>
         <div class="col4">
-            <div class="container">
-                <h1>Avalie nosso serviço</h1>
-                <form action="">
-                    <div class="rating">
-                        <input type="radio" name="rating" id="star5" value="5">
-                        <label for="star5"></label>
-                        <input type="radio" name="rating" id="star4" value="4">
-                        <label for="star4"></label>
-                        <input type="radio" name="rating" id="star3" value="3">
-                        <label for="star3"></label>
-                        <input type="radio" name="rating" id="star2" value="2">
-                        <label for="star2"></label>
-                        <input type="radio" name="rating" id="star1" value="1">
-                        <label for="star1"></label>
-                    </div>
-                    <button type="submit">Enviar Avaliação</button>
-                </form>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5"></label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4"></label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3"></label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2"></label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1"></label>
             </div>
+            <p>Avaliação: <span id="ratingValue">0</span></p>
         </div>
         <div class="col8">
             <form method="POST" class="formLogin">
@@ -72,6 +67,6 @@
             </form>
         </div>    
     </section>
-   
+<script src="index.js"></script>
 </body>
 </html>
