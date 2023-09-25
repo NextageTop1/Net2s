@@ -9,7 +9,7 @@ body{
 
 .col1{width: 8.33%;}
 .col2{width: 16.66%;}
-.col3{width: 24.9%;}
+.col3{width: 24.9%; }
 .col4{width: 33.33%;}
 .col5{width: 41.65%;}
 .col6{width: 50%;}
@@ -141,15 +141,7 @@ main .col6 img{
     width: 1em;
     margin-left: -1em;
 }
-.col3 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #008cba;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
+
 }
 header #div2{
     display: flex;
@@ -168,7 +160,7 @@ header #div2{
 
 }
    
- input{
+input{
     padding: 15px;
     width: 100%;
     border: none;
@@ -191,7 +183,8 @@ header #div2{
     cursor: pointer;
 }
 .container {
-    max-width: 400px;
+    float: left;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
@@ -220,10 +213,6 @@ h1 {
     content: "\2605"; /* Estrela vazia: ☆ */
 }
 
-.rating input[type="radio"]:checked ~ label:before {
-    content: "\2605"; /* Estrela cheia: ★ */
-    color: gold;
-}
 
 .rating label:before {
     content: "\2605"; /* Estrela vazia: ☆ */
@@ -243,6 +232,6 @@ section button {
     border: none;
     cursor: pointer;
 }
-.col11 form{
+.col8 form{
     float: right;
 }
