@@ -74,7 +74,7 @@ input[type="text"]  {
 
 #as {
     background-color: yellow;
-    padding: 5px;
+    padding: 5px;}
 .menu {
    list-style: none;
    display: flex;
@@ -84,8 +84,6 @@ input[type="text"]  {
 
 .menu a{
     color: #042457;
-    background-color: aqua;
-
 }
 .menu a :hover{
     background-color: purple;
@@ -94,9 +92,16 @@ input[type="text"]  {
     margin: 0 200px;
     padding: 0.2px;
 }
+#instagram ion-icon{
+    color: rgb(230, 7, 218);
+}
+#menuy ion-icon{
+    color: #000916;
+
+}
 .menu ion-icon{
     font-size: 30px;
-}
+    color: #007bff;
 }
 main{
     width: 100%;
