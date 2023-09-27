@@ -100,7 +100,6 @@ input[type="text"]  {
 }
 main{
     width: 100%;
-
 }
 main section img{
     margin-bottom: 6%;
@@ -126,19 +125,15 @@ main .col6 img{
 
 }
 .tenis div{
-    margin-top: 1% ;
     float: left;
     width: 24.5%;
-    height: 400px;
+    height: 100%;
     margin-left: 0.5%;
 }
 
 .tenis div img{
     width: 100%;
     height: 100%;
-}
-.descricao{
-    text-align: center;;
 }
 .product-box {
     padding: 4px;
@@ -166,11 +161,6 @@ main .col6 img{
     margin-left: -1em;
 }
 
-header #div2{
-    display: flex;
-    justify-content: center;
-    padding-top: 25px;
-}
 .Log{
     float: right;
     width: 39%;
@@ -211,6 +201,9 @@ input{
     margin: 0 auto;
     text-align: center;
 }
+section div{
+    margin-bottom:5%;
+}
 section button {
     display: block;
     margin: 20px auto;
@@ -245,4 +238,22 @@ section button {
     100% {
         opacity: 1;
     }
+}
+footer{
+    width: 100%;
+    background-color: #042457;
+    color: white;
+    box-shadow:-1px 0 0.4em rgb(0, 0, 0);
+}
+footer li{
+    display: inline-block;
+    margin-right: 20%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+footer li:hover{
+    color: yellow;
+    text-decoration: underline;
+}
+footer li:visited{
+    color: yellow;
 }
