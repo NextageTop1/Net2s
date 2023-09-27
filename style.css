@@ -25,7 +25,7 @@ header{
     color: white;
     margin: 0;
     background:linear-gradient(to right, #042457 50%,#000916 ); 
-    height: 150px;
+    height: 130px;
 }
 header div {
     color: white;
@@ -71,11 +71,36 @@ input[type="text"]  {
 #login:hover{
     transform: scale(1.5);
 }
+
 #as {
     background-color: yellow;
+    padding: 5px;
+.menu {
+   list-style: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.menu a{
+    color: #042457;
+    background-color: aqua;
+
+}
+.menu a :hover{
+    background-color: purple;
+}
+.menu li{
+    margin: 0 200px;
+    padding: 0.2px;
+}
+.menu ion-icon{
+    font-size: 30px;
+}
 }
 main{
     width: 100%;
+
 }
 main section img{
     margin-bottom: 6%;
