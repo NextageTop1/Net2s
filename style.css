@@ -262,3 +262,7 @@ footer li:hover{
 footer li:visited{
     color: yellow;
 }
+.container{
+    display: flex;
+    justify-content: space-around;
+}
