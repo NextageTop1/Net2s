@@ -24,11 +24,21 @@
         </div>
     </header>
     <main class="container">
-        <table>
-            <th>cabeca</th>
-            
-
-
+        <table border="1">
+            <tbody>
+                <tr>
+                <td>Nome</td>
+                <td>Preço</td>
+                <td>Qtd</td>
+                <td>total</td>
+                </tr>
+                <tr>
+                    <td>Asics 11 </td>
+                    <td class="preco">450.00</td>
+                    <td><span id="Qtd">1</span><button  class="btn" onclick="aumentar(1)">+</button><button class="btn" onclick="aumentar(2)">-</button></td>
+                    <td id="total" onchange="calcular()"></td>
+                </tr>
+            </tbody>
         </table>
     </main>
 <script src="index.js"></script>
