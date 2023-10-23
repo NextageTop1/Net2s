@@ -38,4 +38,3 @@ function aumentar(x) {
     qtdElement.textContent = qtd;
     calcular()
 }
-
