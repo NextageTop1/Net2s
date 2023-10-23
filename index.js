@@ -17,3 +17,25 @@ function showSlides() {
     slides[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 4000); // Altera a imagem a cada 2 segundos (2000ms)
 }
+function calcular() {
+    var preco = parseFloat(document.querySelector(".preco").textContent);
+    var qtd = parseInt(document.getElementById("Qtd").textContent);
+    var totalElement = document.getElementById("total");
+    var total = parseFloat(totalElement.textContent);
+    total = preco * qtd;
+    totalElement.textContent = total;
+}
+
+function aumentar(x) {
+    var qtdElement = document.getElementById("Qtd");
+    var qtd = parseInt(document.getElementById("Qtd").textContent);
+
+    if (x === 1) {
+        qtd += 1;
+    } else if (x === 2) {
+        qtd -= 1;
+    }
+    qtdElement.textContent = qtd;
+    calcular()
+}
+

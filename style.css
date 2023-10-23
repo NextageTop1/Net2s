@@ -266,3 +266,7 @@ footer li:visited{
     display: flex;
     justify-content: space-around;
 }
+table{
+    width: 90%;
+    align-items: center;
+}
