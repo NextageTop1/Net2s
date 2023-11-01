@@ -59,6 +59,33 @@ input[type="text"]  {
     font-family: Arial, Helvetica, sans-serif;
 
 }
+.Product{
+    display: inline-flex;
+    width: 100%;
+    border: solid black 2px;
+    height: 600px;
+}
+.descri{
+    border: solid green 2px;
+    width: 24.9%;
+    height: 100%;
+    margin-left: 02PX;
+}
+.foto{
+   width: 41%;
+   height: 550px;
+}
+.foto img{
+    height: 550px;
+}
+.prec{
+    border: #042457 solid 2px;
+    float: right;
+    width: 24.9%;
+    height: 600px;
+
+
+}
 .formulario{
     margin: 0 auto;
     width: 100%;
@@ -118,12 +145,10 @@ main section img:hover{
 }
 main .col3{
     float: left;
-    margin-left: 8.3%;
     
 }
 main .col6{
     float: left;
-    margin-right: 8.3%;
 }
 main .col6 img{
     height:600px;
@@ -141,9 +166,10 @@ main .col6 img{
     height: 100%;
 }
 .product-box {
+    height: 600px;
     padding: 4px;
     width: 100%;
-    margin: 0 auto;
+  
     margin-top: 20px;
     text-align: left;
 }
@@ -154,10 +180,13 @@ main .col6 img{
 
 .product-box ul {
     padding: 0;
-    margin: 0;
+    margin: 40px;
     list-style-type: none;
 }
-
+.product-box ul li{
+    padding: 9px;
+    
+}
 .product-box ul li::before {
     content: "\2022";
     color: #008cba;
