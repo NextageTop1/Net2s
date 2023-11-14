@@ -1,36 +1,16 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql2');
-const connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password:'',
-    database: 'net2s',
-})
+const handlebars = require('express-handlebars');
 
-connection.connect((err) => {
-    if(err){
-        console.error('Erro'+err.stack);
+// engine
+    app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
+    app.set('view engine', 'handlebars');
 
-        return;
-    }
-    console.log('Conexao bem'+connection.threadld);
-});
+    app.get('/cad',(req, res) => {
+        res.render('formulario')
+    })
 
-app.set('view engine', 'ejs');
-
-app.get('/', (req, res) => {
-    connection.query('SELECT * FROM usuario', (err, results, fields) => {
-        if (err) {
-            console.error('Erro na consulta:', err.stack);
-            res.status(500).send('Erro');
-            return;
-        }
-
-        res.render('index', { options: results });
-    });
-});
 
 app.listen(3000, () => {
-    console.log("Funcionando");
+  console.log('Funcionando');
 });
