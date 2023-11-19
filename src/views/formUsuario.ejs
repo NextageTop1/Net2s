@@ -1,0 +1,20 @@
+<!-- views/formUsuario.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Busca de Usuário</title>
+</head>
+<body>
+    <h1>Informe o ID do Usuário</h1>
+    <% if (typeof error !== 'undefined' && error !== null) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/usuario" method="get">
+        <label for="userId">ID do Usuário:</label>
+        <input type="text" id="userId" name="usu_id" required>
+        <a href="/buscausuario"><button type="submit">Buscar</button></a>
+    </form>
+</body>
+</html>
