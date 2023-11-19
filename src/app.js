@@ -40,6 +40,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));  // Corrigido: Importe o módulo path
 
 
+app.use(express.static(path.join(__dirname,'../public')))
+
 app.get('/', (req, res) => {
   connection.query('SELECT * FROM usuario', (err, results, fields) => {
       if (err) {
@@ -47,7 +49,8 @@ app.get('/', (req, res) => {
           res.status(500).send('Erro');
           return;
       }
-      res.render('index', { options: results });
+      res.sendFile(path.join(__dirname, '../public/index.html'))
+    //   res.render('index', { options: results });
   });
 });
 
@@ -109,7 +112,7 @@ app.post('/cadastrar', (req, res) => {
       }
 
       console.log('Usuário cadastrado com sucesso!');
-      res.redirect('/home');  // ou redirecione para outra página após o cadastro
+      res.redirect('/');  // ou redirecione para outra página após o cadastro
   });
 });
 
