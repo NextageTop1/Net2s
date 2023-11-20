@@ -49,10 +49,11 @@ app.get('/', (req, res) => {
           res.status(500).send('Erro');
           return;
       }
-      res.sendFile(path.join(__dirname, '../public/index.html'))
-    //   res.render('index', { options: results });
+      res.render('index',{ options: results });
   });
-});
+// app.get('/', (req, res) => {
+//   res.render('index')
+})
 
 
 app.get('/formUsuario', (req, res) => {
@@ -122,10 +123,6 @@ app.post('/cadastrar', async (req, res) => {
       res.status(500).send('Erro ao cadastrar');
     }
 });
-app.post((req,res) => {
-    
-
-})
 
 
 // const crypto = require('crypto');
