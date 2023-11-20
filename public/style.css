@@ -38,18 +38,18 @@ header nav img{
     width: 20%;
     height: 100% ;
 }
-input, ion-icon{
+header nav input, ion-icon{
     float: left;
     height: 30px;
 }
-input[type="text"]  {
+#pesquisa {
     width: 90%;
-    height: 2px;
-    border: 1px solid;
-    border-radius: 10px;
+    height: 25px;
+    border: 1px solid yellow;
+    border-radius: 10dvb;
     background: white;
     /* outline: none; */
-    color: beige;
+    color: black;
     margin-right: 1%;
     box-shadow:-1px 0 0.4em rgb(156, 156, 4);
     font-family: Arial, Helvetica, sans-serif;
@@ -196,29 +196,57 @@ main .col6 img{
     width: 39%;
     padding-top: 40px;
 }
+.Log form{
+    background:linear-gradient(to bottom, #154ca5 40%,rgb(0, 0, 0) );
+    color: white;
+    border-radius: 4%;
+
+}
+.Log form input{
+    border: solid rgb(162, 12, 199) 1px;
+    border-radius: 1dvh;
+    padding: 15px;
+    width: 50%;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
 
 .Cads{
     margin-left: 20% ;
     padding-top: 60px;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
 }
-   
-input{
+.Cads form {
+    background:linear-gradient(to bottom, #154ca5 40%,rgb(0, 0, 0) );
+    color: white;
+    border-radius: 4%;
+}
+
+
+.Cads form input{
+    border: solid rgb(162, 12, 199) 1px;
+    border-radius: 1dvh;
     padding: 15px;
-    width: 100%;
-    border: none;
+    width: 50%;
     outline: none;
     font-size: 15px;
+    margin-bottom: 5px;
 }
+   
 .btn{
     background-color: dodgerblue;
     border: none;
     padding: 15px;
-    width: 100%;
+    width: 55%;
     border-radius: 10px;
     color: white;
     font-size: 15px;
     height: 50px;
+    margin-bottom: 10px;
     
 }
 .btn:hover{

@@ -88,8 +88,8 @@ app.get('/formulario', (req, res) => {
   res.render('formulario');
 });
 
-app.post('/cadastrar', (req, res) => {
-  const {
+app.post('/cadastrar', async (req, res) => {
+    const {
       nome,
       telefone,
       senha,
@@ -97,24 +97,35 @@ app.post('/cadastrar', (req, res) => {
       permissao,
       end_cobranca,
       end_entrega
-  } = req.body;
-
-  const insertQuery = `
+    } = req.body;
+  
+    const insertQuery = `
       INSERT INTO usuario (usu_nome, telefone, senha, usu_email, usu_permissao, usu_end_cobranca, usu_end_entrega)
       VALUES (?, ?, ?, ?, ?, ?, ?)
-  `;
-
-  connection.query(insertQuery, [nome, telefone, senha, email, permissao, end_cobranca, end_entrega], (err, results) => {
-      if (err) {
-          console.error('Erro ao cadastrar:', err.stack);
-          res.status(500).send('Erro ao cadastrar');
-          return;
-      }
-
+    `;
+  
+    try {
+      const results = await new Promise((resolve, reject) => {
+        connection.query(insertQuery, [nome, telefone, senha, email, permissao, end_cobranca, end_entrega], (err, results) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(results);
+        });
+      });
+  
       console.log('Usuário cadastrado com sucesso!');
-      res.redirect('/');  // ou redirecione para outra página após o cadastro
-  });
+      res.redirect('/'); // ou redirecione para outra página após o cadastro
+    } catch (error) {
+      console.error('Erro ao cadastrar:', error.stack);
+      res.status(500).send('Erro ao cadastrar');
+    }
 });
+app.post((req,res) => {
+    
+
+})
 
 
 // const crypto = require('crypto');

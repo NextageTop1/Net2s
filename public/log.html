@@ -26,11 +26,9 @@
             <form method="POST">
                 <h1>Entrar</h1>
                 <p>Digite os seus dados de acesso no campo abaixo.</p>
-                <label for="email">E-mail</label>
-                <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
-                <label for="password">Senha</label>
+                <input type="email" placeholder="Digite seu e-mail" autofocus="true" /> 
                 <input type="password" placeholder="Digite sua senha" />
-                <input type="submit" value="Acessar" class="btn" />
+                <button type="submit" class="btn"> Entrar</button> <br>
                 <a href="/">Esqueci minha senha</a>
             </form>
         </div>
@@ -38,31 +36,23 @@
 
     <div class="col5">
         <div class="Cads">
-            <form action="/cadastrar" method="POST">
+            <form action="/cadastrar" method="post">
                 <h1>Cadastrar</h1>
                 <p>Digite os seus dados nos campos abaixo.</p>
-                <form action="/cadastrar" method="post">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
             
-                    <label for="telefone">Telefone:</label>
-                    <input type="text" id="telefone" name="telefone" required>
+                    <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
             
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" required>
+                    <input type="password" id="senha" name="senha" placeholder="Senha" required>
+
+                    <input type="email" id="email" name="email" placeholder="Email" required>
             
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="number" id="permissao" name="permissao" placeholder="Permissão" required>
             
-                    <label for="permissao">Permissão:</label>
-                    <input type="number" id="permissao" name="permissao" required>
+                    <input type="text" id="end_cobranca" name="end_cobranca" placeholder="Endereço: rua,numero,setor,cidade">
             
-                    <label for="end_cobranca">Endereço de Cobrança:</label>
-                    <input type="text" id="end_cobranca" name="end_cobranca" required>
-            
-                    <label for="end_entrega">Endereço de Entrega:</label>
-                    <input type="text" id="end_entrega" name="end_entrega" required>
-                <input type="submit" value="Criar" class="btn" />                                       
+                    <input type="text" id="end_entrega" name="end_entrega" placeholder="Confirmar endereco" required>
+                <button type="submit" class="btn">Enviar</button>                                      
             </form>
         </div>
     </div>
