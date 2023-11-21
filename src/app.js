@@ -18,9 +18,18 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
-const path = require('path');  // Adicione esta linha
-app.use(express.urlencoded({ extended: true }));
+const path = require('path');
+const session = require('express-session'); // Adicione esta linha
 
+// ... outras configurações
+
+// Configuração da sessão
+app.use(session({
+    secret: 'net2s', // Chave secreta para assinar a sessão (pode ser qualquer string)
+    resave: true,
+    saveUninitialized: true
+    // Você pode adicionar outras opções conforme necessário
+}));
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -124,6 +133,15 @@ app.post('/cadastrar', async (req, res) => {
     }
 });
 
+app.post('/login', (req, res) => {
+  const {email,senha} = req.body
+  const selectQuery = 'SELECT * FROM usuario WHERE email = ?';
+  const usuario = connection.query(selectQuery,email)
+  req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
+  req.session.username = 'NomeDoUsuario'; // Outro exemplo de dado na sessão
+
+  // Redirecione ou faça qualquer outra coisa após o login
+});
 
 // const crypto = require('crypto');
 
