@@ -19,7 +19,9 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 const path = require('path');
+app.use(express.urlencoded({ extended: true }));
 const session = require('express-session'); // Adicione esta linha
+const flash = require('connect-flash')
 
 // ... outras configurações
 
@@ -108,7 +110,6 @@ app.post('/cadastrar', async (req, res) => {
       end_cobranca,
       end_entrega
     } = req.body;
-  
     const insertQuery = `
       INSERT INTO usuario (usu_nome, telefone, senha, usu_email, usu_permissao, usu_end_cobranca, usu_end_entrega)
       VALUES (?, ?, ?, ?, ?, ?, ?)
@@ -133,16 +134,35 @@ app.post('/cadastrar', async (req, res) => {
     }
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
   const {email,senha} = req.body
-  const selectQuery = 'SELECT * FROM usuario WHERE email = ?';
-  const usuario = connection.query(selectQuery,email)
-  req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
-  req.session.username = 'NomeDoUsuario'; // Outro exemplo de dado na sessão
+  const selectQuery = 'SELECT * FROM usuario WHERE usu_email = ?';
+  var usuario = {}
+  const results = await new Promise((resolve, reject) => {
+  connection.query(selectQuery,[email,senha] , (err, results) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(usuario = results)
+    });
+  });
+  req.session.usuario = usuario[0]
+  res.redirect('/perfil')
+
+  // if(senha === usuario.senha){
+  //   res.redirect('/perfil')}
+  // req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
+  // req.session.username = 'NomeDoUsuario'; // Outro exemplo de dado na sessão
 
   // Redirecione ou faça qualquer outra coisa após o login
 });
+app.get('/perfil', (req, res) =>{
+  const usuario = req.session.usuario
+  console.log(usuario.usu_id)
+  res.render('perfil',{usuario})
 
+})
 // const crypto = require('crypto');
 
 // const senhaOriginal = 'minhaSenha';
