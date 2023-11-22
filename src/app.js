@@ -19,12 +19,12 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 const path = require('path');
-app.use(express.urlencoded({ extended: true }));
+
 const session = require('express-session'); // Adicione esta linha
 const flash = require('connect-flash')
 
 // ... outras configurações
-
+app.use(express.urlencoded({ extended: true }));
 // Configuração da sessão
 app.use(session({
     secret: 'net2s', // Chave secreta para assinar a sessão (pode ser qualquer string)
@@ -60,7 +60,9 @@ app.get('/', (req, res) => {
           res.status(500).send('Erro');
           return;
       }
-      res.render('index',{ options: results });
+      console.log(req.session.usuario)
+      const usuario = req.session.usuario
+      res.render('index',{ options: results, usuario });
   });
 // app.get('/', (req, res) => {
 //   res.render('index')
@@ -145,8 +147,11 @@ app.post('/login', async (req, res) => {
         return;
       }
       resolve(usuario = results)
-    });
+
+      
   });
+})
+
   req.session.usuario = usuario[0]
   res.redirect('/perfil')
 
@@ -154,7 +159,6 @@ app.post('/login', async (req, res) => {
   //   res.redirect('/perfil')}
   // req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
   // req.session.username = 'NomeDoUsuario'; // Outro exemplo de dado na sessão
-
   // Redirecione ou faça qualquer outra coisa após o login
 });
 app.get('/perfil', (req, res) =>{

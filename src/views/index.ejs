@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.ejs"><img src="fotos/Design sem nome (3).png" alt=""></a>
+            <a href="/perfil"><img src="fotos/Design sem nome (3).png" alt=""></a>
         </nav>
         <nav class="div2">
             <div class="formulario">
@@ -23,8 +23,14 @@
         </nav>
         <nav>
             <a href="log.html"><img src="fotos/login.png" alt="" id="login"></a>
+            <% if (!usuario) { %>
+           <h1 class="btn">erro, sem usuario<h1>
+        <% } else { %>
+            <h1 class="btn"><%=usuario.usu_email%><h1>
+         <% } %>
         </nav>
-        <span></span>
+       
+        
     </header>
     <main>
         <nav id="as">
