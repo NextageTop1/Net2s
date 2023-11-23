@@ -9,19 +9,25 @@
 <body>
     <header>
         <nav>
-            <a href="index.ejs"><img src="fotos/Design sem nome (3).png" alt=""></a>
+            <a href="/"><img src="fotos/Design sem nome (3).png" alt=""></a>
         </nav>
         <nav class="div2">
             <div class="formulario">
                 <form action="">
-                    <input type="text" placeholder="O que você procura?">
+                    <input type="text" placeholder="O que você procura?" id="pesquisa">
                     <ion-icon name="search-outline"></ion-icon>
                 </form>
             </div>
         </nav>
         <nav>
-            <a href="log.html"><img src="fotos/login.png" alt="" id="login"></a>
+        <% if (!usuario) { %>
+           <a href="log.html"><img src="fotos/login.png" alt="" id="login"></a>
+        <% } else { %>
+            <h1><a href="/perfil"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a></h1>
+         <% } %>
         </nav>
+       
+        
     </header>
     <main>
         <div class="col3">

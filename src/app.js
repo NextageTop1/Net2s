@@ -174,6 +174,7 @@ app.get('/perfil', (req, res) =>{
 
 // console.log('Hash da senha:', hash);
 
+app.get("/produto-1",)
 
 
 app.listen(3000, () => {
