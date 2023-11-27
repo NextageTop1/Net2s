@@ -23,6 +23,12 @@ const path = require('path');
 const session = require('express-session'); // Adicione esta linha
 const flash = require('connect-flash')
 
+const bcrypt = require('bcrypt') 
+
+const rd = require('node:crypto')
+
+//Crypitografia
+const crypto = require('crypto');
 // ... outras configurações
 app.use(express.urlencoded({ extended: true }));
 // Configuração da sessão
@@ -116,10 +122,12 @@ app.post('/cadastrar', async (req, res) => {
       INSERT INTO usuario (usu_nome, telefone, senha, usu_email, usu_permissao, usu_end_cobranca, usu_end_entrega)
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
-  
+  // const senhac = crypto.createHash('sha256').update(senha).digest('hex');
+  const randomSalt = rd.randomInt(10,16)
+  const senhac =  await bcrypt.hash(senha, randomSalt)
     try {
       const results = await new Promise((resolve, reject) => {
-        connection.query(insertQuery, [nome, telefone, senha, email, permissao, end_cobranca, end_entrega], (err, results) => {
+        connection.query(insertQuery, [nome, telefone, senhac, email, permissao, end_cobranca, end_entrega], (err, results) => {
           if (err) {
             reject(err);
             return;
@@ -135,28 +143,32 @@ app.post('/cadastrar', async (req, res) => {
       res.status(500).send('Erro ao cadastrar');
     }
 });
-
+app.get('/login' , (req,res) => {
+  res.render('log')
+})
 app.post('/login', async (req, res) => {
   const {email,senha} = req.body
   const selectQuery = 'SELECT * FROM usuario WHERE usu_email = ?';
   var usuario = {}
   const results = await new Promise((resolve, reject) => {
-  connection.query(selectQuery,[email,senha] , (err, results) => {
+  connection.query(selectQuery,[email] , (err, results) => {
       if (err) {
         reject(err);
         return;
       }
-      resolve(usuario = results)
-
-      
+      resolve(usuario = results[0])
   });
 })
-
-  req.session.usuario = usuario[0]
-  res.redirect('/perfil')
-
-  // if(senha === usuario.senha){
-  //   res.redirect('/perfil')}
+//1234
+// const senhac = crypto.createHash('sha256').update(senha).digest('hex');
+const senhac = await bcrypt.compare(senha,usuario.senha)
+console.log(senhac)
+  if(senhac === true){
+    req.session.usuario = usuario
+    // const senhac = crypto.createHash('sha256').update(senha).digest('decryption');
+    res.redirect('/perfil')
+}
+  //   res.redirect('/perfil')
   // req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
   // req.session.username = 'NomeDoUsuario'; // Outro exemplo de dado na sessão
   // Redirecione ou faça qualquer outra coisa após o login
@@ -167,12 +179,12 @@ app.get('/perfil', (req, res) =>{
   res.render('perfil',{usuario})
 
 })
-// const crypto = require('crypto');
+
 
 // const senhaOriginal = 'minhaSenha';
-// const hash = crypto.createHash('sha256').update(senhaOriginal).digest('hex');
 
-// console.log('Hash da senha:', hash);
+
+// console.log('Hash da senha:', senhac);
 
 app.get("/produto-1",)
 
