@@ -327,6 +327,17 @@ footer li:visited{
     justify-content: space-around;
 }
 table{
-    width: 90%;
+    width: 60%;
+    display: flex;
     align-items: center;
+    align-content: center;
+    gap: 30px;
+    border: solid;
+}
+.table tr td{
+    width: 20%;
+}
+.table img{
+    width: 200px;
+    height: 20%;
 }

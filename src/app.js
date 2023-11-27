@@ -143,9 +143,13 @@ app.post('/cadastrar', async (req, res) => {
       res.status(500).send('Erro ao cadastrar');
     }
 });
+
+
 app.get('/login' , (req,res) => {
-  res.render('log')
+  const msgError = req.query.erro || '';
+  res.render('log', { msgError})
 })
+
 app.post('/login', async (req, res) => {
   const {email,senha} = req.body
   const selectQuery = 'SELECT * FROM usuario WHERE usu_email = ?';
@@ -163,11 +167,16 @@ app.post('/login', async (req, res) => {
 // const senhac = crypto.createHash('sha256').update(senha).digest('hex');
 const senhac = await bcrypt.compare(senha,usuario.senha)
 console.log(senhac)
+
   if(senhac === true){
     req.session.usuario = usuario
     // const senhac = crypto.createHash('sha256').update(senha).digest('decryption');
     res.redirect('/perfil')
 }
+  else {
+  res.redirect('/login?erro=Senha Incorreta.')
+}
+
   //   res.redirect('/perfil')
   // req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
   // req.session.username = 'NomeDoUsuario'; // Outro exemplo de dado na sessão
@@ -181,12 +190,16 @@ app.get('/perfil', (req, res) =>{
 })
 
 
+app.get('/carrinho', (req , res) => {
+
+  res.render('carrinho')
+})
+
 // const senhaOriginal = 'minhaSenha';
 
 
 // console.log('Hash da senha:', senhac);
 
-app.get("/produto-1",)
 
 
 app.listen(3000, () => {
