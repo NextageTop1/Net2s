@@ -326,7 +326,7 @@ footer li:visited{
     display: flex;
     justify-content: space-around;
 }
-table{
+.table{
     width: 60%;
     display: flex;
     align-items: center;
@@ -334,8 +334,11 @@ table{
     gap: 30px;
     border: solid;
 }
-.table tr td{
-    width: 20%;
+.table tr{
+    width: 100%;
+    border: solid;
+    display: flex;
+    flex-direction: row;
 }
 .table img{
     width: 200px;
