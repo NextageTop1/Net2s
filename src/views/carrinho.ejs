@@ -20,7 +20,7 @@
             </div>
         </nav>
         <nav>
-        <% if (!usuario) { %>
+        <% if (!usuario) { %> 
            <a href="/login"><img src="fotos/login.png" alt="" id="login"></a>
         <% } else { %>
             <h1><a href="/perfil"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a></h1>
@@ -30,9 +30,9 @@
     <main class="container">
         <table class="table">
             <tr>
-                <td><img src="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom1.png" alt=""></td>
-                <td>preço</td>
-                <td>descrição</td>
+                <td><img src="<%=caminho%>" alt=""></td>
+                <td><%=produto%></td>
+                <td></td>
                 <td>quantidade</td>
             </tr>
         </table>

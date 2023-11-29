@@ -28,7 +28,7 @@ const bcrypt = require('bcrypt')
 const rd = require('node:crypto')
 
 //Crypitografia
-const crypto = require('crypto');
+// const crypto = require('crypto');
 // ... outras configurações
 app.use(express.urlencoded({ extended: true }));
 // Configuração da sessão
@@ -192,12 +192,22 @@ app.get('/perfil', (req, res) =>{
 app.get('/PP1',(req,res)=>{
   const usuario = req.session.usuario
   res.render('PP1', {usuario})
-
 })
+app.post('/PP1',(req,res)=>{
+  res.redirect('/carrinho?caminho= tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg')
+})
+
 
 app.get('/carrinho', (req , res) => {
   const usuario = req.session.usuario
-  res.render('carrinho',{usuario})
+  const produto = req.query.produto || '';
+  const caminho = req.query.caminho
+
+  if(usuario){
+    res.render('carrinho',{usuario,produto,caminho})
+  }else{
+    res.redirect('/login')
+  }
 
 })
 
