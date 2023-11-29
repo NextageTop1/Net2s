@@ -189,10 +189,16 @@ app.get('/perfil', (req, res) =>{
 
 })
 
+app.get('/PP1',(req,res)=>{
+  const usuario = req.session.usuario
+  res.render('PP1', {usuario})
+
+})
 
 app.get('/carrinho', (req , res) => {
   const usuario = req.session.usuario
   res.render('carrinho',{usuario})
+
 })
 
 // const senhaOriginal = 'minhaSenha';
