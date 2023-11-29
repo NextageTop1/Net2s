@@ -191,8 +191,8 @@ app.get('/perfil', (req, res) =>{
 
 
 app.get('/carrinho', (req , res) => {
-
-  res.render('carrinho')
+  const usuario = req.session.usuario
+  res.render('carrinho',{usuario})
 })
 
 // const senhaOriginal = 'minhaSenha';
