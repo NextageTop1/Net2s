@@ -138,7 +138,7 @@ app.post('/cadastrar', async (req, res) => {
   
       console.log('Usuário cadastrado com sucesso!');
       res.redirect('/'); // ou redirecione para outra página após o cadastro
-    } catch (error) {
+    }catch (error) {
       console.error('Erro ao cadastrar:', error.stack);
       res.status(500).send('Erro ao cadastrar');
     }
@@ -198,11 +198,21 @@ app.post('/PP1',(req,res)=>{
 })
 
 
-app.get('/carrinho', (req , res) => {
+app.get('/carrinho', async(req , res) => {
   const usuario = req.session.usuario
-  const produto = req.query.produto || '';
+  var produto = parseInt(req.query.produto) || '';
   const caminho = req.query.caminho
-
+  console.log(produto)
+  const produtoQuery = 'SELECT * FROM produto WHERE prod_id = ?'
+  const results =  await new Promise((resolve, reject) => {
+  connection.query(produtoQuery,1,(err, results) => {
+    if (err) {
+      reject(err);
+      return;
+    }
+    resolve(produto = results[0])
+  })
+})
   if(usuario){
     res.render('carrinho',{usuario,produto,caminho})
   }else{
