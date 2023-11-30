@@ -25,11 +25,13 @@ const flash = require('connect-flash')
 
 const bcrypt = require('bcrypt') 
 
+const bodyParser = require('body-parser')
 const rd = require('node:crypto')
 
 //Crypitografia
 // const crypto = require('crypto');
 // ... outras configurações
+app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 // Configuração da sessão
 app.use(session({
@@ -200,12 +202,17 @@ app.post('/PP1',(req,res)=>{
 
 app.get('/carrinho', async(req , res) => {
   const usuario = req.session.usuario
-  var produto = parseInt(req.query.produto) || '';
+  var produto = document.querySelector("underaramour") || '';
+
+
   const caminho = req.query.caminho
+
+
   console.log(produto)
-  const produtoQuery = 'SELECT * FROM produto WHERE prod_id = ?'
+
+  const produtoQuery = 'SELECT * FROM produto WHERE prod_nome = ?'
   const results =  await new Promise((resolve, reject) => {
-  connection.query(produtoQuery,1,(err, results) => {
+  connection.query(produtoQuery,produto,(err, results) => {
     if (err) {
       reject(err);
       return;
