@@ -9,19 +9,23 @@
 <body>
     <header>
         <nav>
-            <a href="index.ejs"><img src="fotos/Design sem nome (3).png" alt=""></a>
+            <a href="/"><img src="fotos/Design sem nome (3).png" alt=""></a>
         </nav>
         <nav class="div2">
             <div class="formulario">
                 <form action="">
-                    <input type="text" placeholder="O que você procura?">
+                    <input type="text" placeholder="O que você procura?" id="pesquisa">
                     <ion-icon name="search-outline"></ion-icon>
                 </form>
             </div>
         </nav>
         <nav>
-            <a href="log.html"><img src="fotos/login.png" alt="" id="login"></a>
-        </nav>
+        <% if (!usuario) { %>
+           <a href="log.html"><img src="fotos/login.png" alt="" id="login"></a>
+        <% } else { %>
+            <h1><a href="/perfil"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a></h1>
+         <% } %>
+        </nav>  
     </header>
     <main>
         <div class="col3">
@@ -38,7 +42,11 @@
                     </ul>
                 </div>         
                 <h2>R$450.00</h2>
-                <a href="manun.html"><button class="btn">Comprar</button></a>
+                <form action="/add-carrinho" method="POST">
+                    <input type="hidden" name="idProduto" value="3">
+                    <input type="hidden" name="caminhoprod" value="fotos/Design sem nome (3).png">
+                    <button type="submit" class="btn"  > add cart</button>
+                </form>
         </div>
         <div class="col6">
             <div class="slideshow-container">

@@ -1,19 +1,3 @@
-// const express = require('express');
-// const app = express();
-// const handlebars = require('express-handlebars');
-
-// // engine
-//     app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
-//     app.set('view engine', 'handlebars');
-
-//     app.get('/cad',(req, res) => {
-//         res.render('formulario')
-//     })
-
-
-// app.listen(3000, () => {
-//   console.log('Funcionando');
-// });
 
 const express = require('express');
 const app = express();
@@ -196,21 +180,45 @@ app.get('/PP1',(req,res)=>{
   res.render('PP1', {usuario})
 })
 app.post('/PP1',(req,res)=>{
-  res.redirect('/carrinho?caminho= tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg')
+  res.redirect('/carrinho?caminho=tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg')
 })
 
+app.get('/PP2',(req,res)=>{
+  const usuario = req.session.usuario
+  res.render('PP2', {usuario})
+})
+app.post('/PP2',(req,res)=>{
+  res.redirect('/carrinho?caminho=tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg')
+})
 
 app.get('/carrinho', async(req , res) => {
+  if(!req.session.carrinho){
+    req.session.carrinho = []
+  }
   const usuario = req.session.usuario
-  var produto = document.querySelector("underaramour") || '';
-
-
+  const carrinho = req.session.carrinho
   const caminho = req.query.caminho
+  console.log(caminho)
 
+  
 
-  console.log(produto)
+  if(usuario){
+    res.render('carrinho',{usuario,carrinho,caminho,carrinho})
+  }else{
+    res.redirect('/login')
+  }
 
-  const produtoQuery = 'SELECT * FROM produto WHERE prod_nome = ?'
+})
+
+app.post('/add-carrinho', async(req,res)=>{
+  const caminho = req.body.caminhoprod
+  if(!req.session.carrinho){
+    req.session.carrinho = []
+  }
+  var produto = req.body.idProduto || '';
+  const carrinho = req.session.carrinho || [];
+
+  const produtoQuery = 'SELECT * FROM produto WHERE prod_id = ?'
   const results =  await new Promise((resolve, reject) => {
   connection.query(produtoQuery,produto,(err, results) => {
     if (err) {
@@ -220,13 +228,13 @@ app.get('/carrinho', async(req , res) => {
     resolve(produto = results[0])
   })
 })
-  if(usuario){
-    res.render('carrinho',{usuario,produto,caminho})
-  }else{
-    res.redirect('/login')
-  }
+  req.session.carrinho.push(produto,caminho)
+  res.redirect('/carrinho')
 
 })
+
+
+
 
 // const senhaOriginal = 'minhaSenha';
 
