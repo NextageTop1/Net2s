@@ -152,7 +152,6 @@ app.post('/login', async (req, res) => {
 //1234
 // const senhac = crypto.createHash('sha256').update(senha).digest('hex');
 const senhac = await bcrypt.compare(senha,usuario.senha)
-console.log(senhac)
 
   if(senhac === true){
     req.session.usuario = usuario
@@ -170,7 +169,6 @@ console.log(senhac)
 });
 app.get('/perfil', (req, res) =>{
   const usuario = req.session.usuario
-  console.log(usuario.usu_id)
   res.render('perfil',{usuario})
 
 })
@@ -195,10 +193,11 @@ app.get('/carrinho', async(req , res) => {
   if(!req.session.carrinho){
     req.session.carrinho = []
   }
+  console.log(req.session.usuario)
   const usuario = req.session.usuario
   const carrinho = req.session.carrinho
   const caminho = req.query.caminho
-  console.log(caminho)
+  
 
   
 
@@ -217,7 +216,8 @@ app.post('/add-carrinho', async(req,res)=>{
   }
   var produto = req.body.idProduto || '';
   const carrinho = req.session.carrinho || [];
-
+  console.log(produto)
+  console.log(caminho)
   const produtoQuery = 'SELECT * FROM produto WHERE prod_id = ?'
   const results =  await new Promise((resolve, reject) => {
   connection.query(produtoQuery,produto,(err, results) => {
@@ -228,8 +228,8 @@ app.post('/add-carrinho', async(req,res)=>{
     resolve(produto = results[0])
   })
 })
-  req.session.carrinho.push(produto,caminho)
-  res.redirect('/carrinho')
+  req.session.carrinho.push(produto)
+  res.redirect('/carrinho',{caminho})
 
 })
 

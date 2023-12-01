@@ -30,7 +30,7 @@
     <main class="container">
         <table class="table">
             <tr>
-                <td><img src="<%=carrinho[1]%>" alt=""></td>
+                <td><img src="" alt=""></td>
                 <td><%=carrinho.prod_nome%></td>
                 <td><%=carrinho.prod_preco%></td>
                 <td><%=carrinho.prod_descricao%></td>
@@ -38,6 +38,7 @@
             </tr>
             <% carrinho.forEach(produto => { %>
                 <tr>
+                    <td><img src="" alt=""></td>
                     <td><%= produto.prod_nome %></td>
                 </tr>
             <% }); %>
