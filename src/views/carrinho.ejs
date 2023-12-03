@@ -29,18 +29,22 @@
     </header>
     <main class="container">
         <table class="table">
-            <% carrinho.forEach(produto => { %>
+            <% carrinho.forEach((produto, index) => { %>
                 <tr>
-                    <td><img src="<%=produto.img_produto%>" alt="Slide 1"></td>
-                    <td><%=produto.prod_nome%></td>
-                    <td><%=produto.prod_preco%></td>
-                    <td><%=produto.prod_descricao%></td>
-                    <td><button>-</button>1<button>+</button></td><td>
+                    <td><img src="<%= produto.img_produto %>" alt="Slide 1"></td>
+                    <td><%= produto.prod_nome %></td>
+                    <td><%= produto.prod_preco %></td>
+                    <td><%= produto.prod_descricao %></td>
+                    <td>
+                        <button onclick="aumentar(1, '<%= index %>')">+</button>
+                        <span class="Qtd<%= index %>">1</span>
+                        <button onclick="aumentar(2, '<%= index %>')">-</button>
+                    </td>
+                    <td></td>
                 </tr>
             <% }); %>
         </table>
     </main>
-    
-<script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

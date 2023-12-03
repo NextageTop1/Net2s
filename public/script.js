@@ -25,16 +25,16 @@ function calcular() {
     total = preco * qtd;
     totalElement.textContent = total;
 }
-
-function aumentar(x) {
-    var qtdElement = document.getElementById("Qtd");
-    var qtd = parseInt(document.getElementById("Qtd").textContent);
+function aumentar(x, index) {
+    var qtdElement = document.querySelector('.Qtd' + index);
+    var qtd = parseInt(qtdElement.textContent);
 
     if (x === 1) {
         qtd += 1;
     } else if (x === 2) {
         qtd -= 1;
     }
+    qtd = Math.max(qtd, 0); // Impede quantidade negativa
     qtdElement.textContent = qtd;
-    calcular()
+    calcular();
 }
