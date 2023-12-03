@@ -151,16 +151,20 @@ app.post('/login', async (req, res) => {
 })
 //1234
 // const senhac = crypto.createHash('sha256').update(senha).digest('hex');
-const senhac = await bcrypt.compare(senha,usuario.senha)
+try {
+  const senhac = await bcrypt.compare(senha, usuario.senha);
+  if (senhac) {
+     // Usuário autenticado
+     req.session.usuario = usuario;
+     res.redirect('/perfil');
+  } else {
+     res.redirect('/login?erro=Senha Incorreta.');
+  }
+} catch (error) {
+  console.error('Erro ao comparar senhas:', error);
+  res.status(500).send('Erro ao comparar senhas');
+}
 
-  if(senhac === true){
-    req.session.usuario = usuario
-    // const senhac = crypto.createHash('sha256').update(senha).digest('decryption');
-    res.redirect('/perfil')
-}
-  else {
-  res.redirect('/login?erro=Senha Incorreta.')
-}
 
   //   res.redirect('/perfil')
   // req.session.loggedInUser = true; // Exemplo de como definir um valor na sessão
@@ -170,24 +174,19 @@ const senhac = await bcrypt.compare(senha,usuario.senha)
 app.get('/perfil', (req, res) =>{
   const usuario = req.session.usuario
   res.render('perfil',{usuario})
-
 })
 
 app.get('/PP1',(req,res)=>{
   const usuario = req.session.usuario
   res.render('PP1', {usuario})
 })
-app.post('/PP1',(req,res)=>{
-  res.redirect('/carrinho?caminho=tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg')
-})
+
 
 app.get('/PP2',(req,res)=>{
   const usuario = req.session.usuario
   res.render('PP2', {usuario})
 })
-app.post('/PP2',(req,res)=>{
-  res.redirect('/carrinho?caminho=tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg')
-})
+
 
 app.get('/carrinho', async(req , res) => {
   if(!req.session.carrinho){
@@ -197,8 +196,6 @@ app.get('/carrinho', async(req , res) => {
   const usuario = req.session.usuario
   const carrinho = req.session.carrinho
   const caminho = req.session.imgProduto
-  
-
   
 
   if(usuario){
@@ -231,11 +228,42 @@ app.post('/add-carrinho', async(req,res)=>{
   req.session.carrinho.push(produto)
   res.redirect('/carrinho?caminho = caminhoprod')
 })
-app.get('/remove-item',(req , res ) =>{
+// app.get('/remove_item',(req , res ) =>{
+//   const prod_id = req.query.prod_id;
 
+// 	for(let i = 0; i < req.session.cart.length; i++)
+// 	{
+// 		if(request.session.cart[i].product_id === product_id)
+// 		{
+// 			request.session.cart.splice(i, 1);
+// 		}
+// 	}
 
-})
+// 	response.redirect("/");
 
+// })
+app.post('/redef', async (req, res) => {
+    const usuario = req.session.usuario;
+    const novoNome = req.body.nome;
+ 
+    if (novoNome !== usuario.usu_nome) {
+       const updateQuery = 'UPDATE usuario SET usu_nome = ? WHERE usu_id = ?';
+       await new Promise((resolve, reject) => {
+          connection.query(updateQuery, [novoNome, usuario.usu_id], (err, results) => {
+             if (err) {
+                reject(err);
+                return;
+             }
+             resolve(results)
+              req.session.usuario.usu_nome = novoNome;
+             ;
+          });
+       });
+    }
+ 
+    res.redirect("/perfil");
+ });
+ 
 
 app.listen(3000, () => {
     console.log("Funcionando");

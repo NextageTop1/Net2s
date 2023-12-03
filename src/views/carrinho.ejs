@@ -37,12 +37,14 @@
                 <tr>
                     <td><img src="<%= produto.img_produto %>" alt="Slide 1"></td>
                     <td><%= produto.prod_nome %></td>
-                    <td id=".preco"><%= produto.prod_preco %></td>
+                    <td><%= produto.prod_preco %></td>
                     <td>
                         <button onclick="aumentar(1, '<%= index %>')">+</button>
                         <span class="Qtd<%= index %>">1</span>
                         <button onclick="aumentar(2, '<%= index %>')">-</button>
                     </td>
+                    <td><button type="button" class="btn" onclick="remove_item('<%= produto.prod_id %>')">Remove</button></td>
+                </tr></td>
 
                 </tr>
                 <%

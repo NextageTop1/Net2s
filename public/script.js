@@ -38,3 +38,10 @@ function aumentar(x, index) {
     qtdElement.textContent = qtd;
     calcular();
 }
+function remove_item(item_id)
+{
+    if(confirm("Are you sure you want to remove it?"))
+    {
+        window.location.href = `/remove_item?id=${item_id}`;
+    }
+}

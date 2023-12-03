@@ -7,12 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>perfil deu certo</h1>
+    <header>
+        <nav>
+            <a href="/"><img src="fotos/Design sem nome (3).png" alt=""></a>
+        </nav>
+        <nav class="div2">
+            <h1>Bem Vindo,<%= usuario.usu_nome%></h1>
+        </nav>
+        <nav>
+    </header>
     <section class="product-box"> 
         <ul>
-            <li><strong>ID:</strong> <%= usuario.usu_id %></li>
+            <li><strong>ID:</strong> <%= usuario.usu_id %></li> 
+            </form>
             <li><strong>Nome:</strong> <%= usuario.usu_nome %></li>
-            <li><strong>senha:</strong> <%= usuario.senha %></li>
+            <form action="/redef" method="post">
+                <input type="text" name="nome" placeholder="<%=usuario.usu_nome %>" >
+                <button type="submit" class="btn">redef</button>
             <li><strong>Telefone:</strong> <%= usuario.telefone %></li>
             <li><strong>Email:</strong> <%= usuario.usu_email %></li>
             <li><strong>Permissão:</strong> <%= usuario.usu_permissao %></li>
