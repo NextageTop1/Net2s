@@ -173,7 +173,7 @@ try {
 });
 app.get('/perfil', (req, res) =>{
   const usuario = req.session.usuario
-  res.render('perfil',{usuario})
+  res.render('perfil',{usuario,erro: req.query.erro || null })
 })
 
 app.get('/PP1',(req,res)=>{
@@ -263,6 +263,51 @@ app.post('/redef', async (req, res) => {
  
     res.redirect("/perfil");
  });
+
+
+
+
+
+app.post('/alterar-senha', async (req, res) => {
+  const usuario = req.session.usuario;
+
+  if (!usuario) {
+      res.redirect('/login');
+      return;
+  }
+
+  const { senhaAtual, novaSenha } = req.body;
+
+  try {
+    
+      const senhaCorreta = await bcrypt.compare(senhaAtual, usuario.senha);
+
+      if (!senhaCorreta) {
+          res.render('perfil', { usuario, erro: 'Senha atual incorreta' });
+          return;
+      }
+      const randomSalt = rd.randomInt(10,16)
+      const novaSenhaCriptografada = await bcrypt.hash(novaSenha, randomSalt);
+      const updateQuery = 'UPDATE usuario SET senha = ? WHERE usu_id = ?';
+
+      await new Promise((resolve, reject) => {
+          connection.query(updateQuery, [novaSenhaCriptografada, usuario.usu_id], (err, results) => {
+              if (err) {
+                  reject(err);
+                  return;
+              }
+              resolve(results);
+          });
+      });
+
+      res.redirect('/perfil'); 
+  } catch (error) {
+      console.error('Erro ao alterar a senha:', error);
+      res.status(500).send('Erro ao alterar a senha');
+  }
+});
+
+
  app.post('/excluir-conta', async (req, res) => {
   const usuario = req.session.usuario;
 
