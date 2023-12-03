@@ -38,15 +38,3 @@ function aumentar(x) {
     qtdElement.textContent = qtd;
     calcular()
 }
-function produto(){
-    const produto = {produto:document.parentElement.getElementById('formulario').textContent.addEventListener('submit', function(event) {
-    event.preventDefault()
-    })}
-    fetch('/carrinho', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dadosUsuario)
-    })
-}

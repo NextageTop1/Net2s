@@ -196,7 +196,7 @@ app.get('/carrinho', async(req , res) => {
   console.log(req.session.usuario)
   const usuario = req.session.usuario
   const carrinho = req.session.carrinho
-  const caminho = req.query.caminho
+  const caminho = req.session.imgProduto
   
 
   
@@ -210,14 +210,14 @@ app.get('/carrinho', async(req , res) => {
 })
 
 app.post('/add-carrinho', async(req,res)=>{
-  const caminho = req.body.caminhoprod
-  if(!req.session.carrinho){
+  req.session.imgProduto = []
+  req.session.imgProduto.push(req.body.caminhoprod)
+  if(!req.session.carrinho){ 
     req.session.carrinho = []
   }
   var produto = req.body.idProduto || '';
   const carrinho = req.session.carrinho || [];
   console.log(produto)
-  console.log(caminho)
   const produtoQuery = 'SELECT * FROM produto WHERE prod_id = ?'
   const results =  await new Promise((resolve, reject) => {
   connection.query(produtoQuery,produto,(err, results) => {
@@ -229,8 +229,7 @@ app.post('/add-carrinho', async(req,res)=>{
   })
 })
   req.session.carrinho.push(produto)
-  res.redirect('/carrinho',{caminho})
-
+  res.redirect('/carrinho?caminho = caminhoprod')
 })
 
 
