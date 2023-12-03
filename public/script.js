@@ -18,8 +18,8 @@ function showSlides() {
     setTimeout(showSlides, 4000); // Altera a imagem a cada 2 segundos (2000ms)
 }
 function calcular() {
-    var preco = parseFloat(document.querySelector(".preco").textContent);
-    var qtd = parseInt(document.getElementById("Qtd").textContent);
+    var preco = parseFloat(document.getElementById(".preco").textContent);
+    var qtd = parseInt(document.querySelector('.Qtd' + index).textContent);
     var totalElement = document.getElementById("total");
     var total = parseFloat(totalElement.textContent);
     total = preco * qtd;

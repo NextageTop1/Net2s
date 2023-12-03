@@ -231,15 +231,10 @@ app.post('/add-carrinho', async(req,res)=>{
   req.session.carrinho.push(produto)
   res.redirect('/carrinho?caminho = caminhoprod')
 })
+app.get('/remove-item',(req , res ) =>{
 
 
-
-
-// const senhaOriginal = 'minhaSenha';
-
-
-// console.log('Hash da senha:', senhac);
-
+})
 
 
 app.listen(3000, () => {

@@ -29,20 +29,31 @@
     </header>
     <main class="container">
         <table class="table">
-            <% carrinho.forEach((produto, index) => { %>
+            <% 
+            let total = 0
+            carrinho.forEach((produto, index) => { 
+            
+            %>
                 <tr>
                     <td><img src="<%= produto.img_produto %>" alt="Slide 1"></td>
                     <td><%= produto.prod_nome %></td>
-                    <td><%= produto.prod_preco %></td>
-                    <td><%= produto.prod_descricao %></td>
+                    <td id=".preco"><%= produto.prod_preco %></td>
                     <td>
                         <button onclick="aumentar(1, '<%= index %>')">+</button>
                         <span class="Qtd<%= index %>">1</span>
                         <button onclick="aumentar(2, '<%= index %>')">-</button>
                     </td>
-                    <td></td>
+
                 </tr>
+                <%
+                    total += parseFloat(produto.prod_qtd) * parseFloat(produto.prod_preco);           
+                %>
             <% }); %>
+            <tr>
+                <td colspan="3" aling="right"><b>Total</b></td>
+                <td><%= total %> <span id="total"></span></td>
+                <td>&nbsp;</td>
+            </tr >                            
         </table>
     </main>
     <script src="script.js"></script>
