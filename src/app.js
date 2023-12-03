@@ -263,7 +263,50 @@ app.post('/redef', async (req, res) => {
  
     res.redirect("/perfil");
  });
- 
+ app.post('/excluir-conta', async (req, res) => {
+  const usuario = req.session.usuario;
+
+  if (!usuario) {
+      res.redirect('/login');
+      return;
+  }
+  try {
+      const deleteQuery = 'DELETE FROM usuario WHERE usu_id = ?';
+      await new Promise((resolve, reject) => {
+          connection.query(deleteQuery, [usuario.usu_id], (err, results) => {
+              if (err) {
+                  reject(err);
+                  return;
+              }
+              resolve(results);
+          });
+      });
+
+      // Destrói a sessão após a exclusão
+      req.session.destroy((err) => {
+          if (err) {
+              console.error('Erro ao destruir a sessão:', err);
+              res.status(500).send('Erro ao excluir a conta');
+          } else {
+              res.redirect('/login'); // Redireciona para a página de login após a exclusão
+          }
+      });
+  } catch (error) {
+      console.error('Erro ao excluir conta:', error);
+      res.status(500).send('Erro ao excluir a conta');
+  }
+});
+ app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+      if (err) {
+          console.error('Erro ao destruir a sessão:', err);
+          res.status(500).send('Erro ao fazer log out');
+      } else {
+          res.redirect('/login');
+      }
+  });
+});
+
 
 app.listen(3000, () => {
     console.log("Funcionando");

@@ -18,19 +18,24 @@
     </header>
     <section class="product-box"> 
         <ul>
-            <li><strong>ID:</strong> <%= usuario.usu_id %></li> 
-            </form>
-            <li><strong>Nome:</strong> <%= usuario.usu_nome %></li>
             <form action="/redef" method="post">
-                <input type="text" name="nome" placeholder="<%=usuario.usu_nome %>" >
-                <button type="submit" class="btn">redef</button>
+            <li><strong>ID:</strong> <%= usuario.usu_id %></li> 
+            <li><strong>Nome:</strong> <input type="text" name="nome" placeholder="<%=usuario.usu_nome %>"></li>
             <li><strong>Telefone:</strong> <%= usuario.telefone %></li>
             <li><strong>Email:</strong> <%= usuario.usu_email %></li>
             <li><strong>Permissão:</strong> <%= usuario.usu_permissao %></li>
             <li><strong>Endereço de Cobrança:</strong> <%= usuario.usu_end_cobranca %></li>
             <li><strong>Endereço de Entrega:</strong> <%= usuario.usu_end_entrega %></li>
-
+                <button type="submit" class="">redefinir</button>
+            </form>
         </ul>
+
+        <form action="/logout" method="get">
+            <button type="submit">Log Out</button>
+        </form>
+        <form action="/excluir-conta" method="post">
+            <button type="submit" >Excluir Conta</button>
+        </form>
     </section>
   
 </body>
