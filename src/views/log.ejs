@@ -20,43 +20,40 @@
             <a href="log/log.html"><img src="/fotos/login.png" alt="" id="login"></a>
         </nav>
     </header>
-
-    <div class="col11">
+    <main>
         <div class="Log">
-            <form method="POST" action="/login" required>
-                <h1>Entrar</h1>
-                <p>Digite os seus dados de acesso no campo abaixo.</p>
-                <input type="email" placeholder="Digite seu e-mail" name="email" autofocus="true" /> 
-                <input type="password" placeholder="Digite sua senha" name="senha" />  
-                <button type="submit" class="btn"> Entrar</button> <br>
-                <p><%=msgError%></p>
-                <a href="/">Esqueci minha senha</a>
-            </form>
+                <form method="POST" action="/login" required>
+                    <h1>Entrar</h1>
+                    <p>Digite os seus dados de acesso no campo abaixo.</p>
+                    <input type="email" placeholder="Digite seu e-mail" name="email" autofocus="true" /> 
+                    <input type="password" placeholder="Digite sua senha" name="senha" />   <br>
+                    <button type="submit" class="btn"> Entrar</button> <br>
+                    <p><%=msgError%></p>
+                    <a href="/">Esqueci minha senha</a>
+                </form>
+            </div>
+        <div class="col5">
+            <div class="Cads">
+                <form action="/cadastrar" method="post">
+                    <h1>Cadastrar</h1>
+                    <p>Digite os seus dados nos campos abaixo.</p>
+                        <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                
+                        <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
+                
+                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                
+                        <input type="number" id="permissao" name="permissao" placeholder="Permissão" required>
+                
+                        <input type="text" id="end_cobranca" name="end_cobranca" placeholder="Endereço: rua,numero,setor,cidade">
+                
+                        <input type="text" id="end_entrega" name="end_entrega" placeholder="Confirmar endereco" required>
+                    <button type="submit" class="btn">Enviar</button>                                      
+                </form>
+            </div>
         </div>
-    </div>
-
-    <div class="col5">
-        <div class="Cads">
-            <form action="/cadastrar" method="post">
-                <h1>Cadastrar</h1>
-                <p>Digite os seus dados nos campos abaixo.</p>
-                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
-            
-                    <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
-            
-                    <input type="password" id="senha" name="senha" placeholder="Senha" required>
-
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-            
-                    <input type="number" id="permissao" name="permissao" placeholder="Permissão" required>
-            
-                    <input type="text" id="end_cobranca" name="end_cobranca" placeholder="Endereço: rua,numero,setor,cidade">
-            
-                    <input type="text" id="end_entrega" name="end_entrega" placeholder="Confirmar endereco" required>
-                <button type="submit" class="btn">Enviar</button>                                      
-            </form>
-        </div>
-    </div>
-
+    </main>
 </body>
 </html>

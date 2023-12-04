@@ -20,44 +20,71 @@
             </div>
         </nav>
         <nav>
-        <% if (!usuario) { %> 
+        <% if (!usuario) { %>
            <a href="/login"><img src="fotos/login.png" alt="" id="login"></a>
         <% } else { %>
-            <h1><a href="/perfil"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a></h1>
+            <a href="/perfil" class="ajustes"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a>
+            <a href="/carrinho" class="ajustes"><ion-icon class="asd" name="cart-outline"></ion-icon></a>
          <% } %>
         </nav>
     </header>
     <main class="container">
         <table class="table">
+            <tr>
+                <th>imagem</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Remover</th>
+            </tr>
+            <% if(carrinho.length > 0){ %>
             <% 
             let total = 0
             carrinho.forEach((produto, index) => { 
             
             %>
-                <tr>
-                    <td><img src="<%= produto.img_produto %>" alt="Slide 1"></td>
+                <tr class="carrinho">
+                    <td><img src="<%= produto.imgProduto %>" alt="Slide 1"></td>
                     <td><%= produto.prod_nome %></td>
-                    <td><%= produto.prod_preco %></td>
+                    <td class="preco"><%= produto.prod_preco %></td>
                     <td>
-                        <button onclick="aumentar(1, '<%= index %>')">+</button>
-                        <span class="Qtd<%= index %>">1</span>
-                        <button onclick="aumentar(2, '<%= index %>')">-</button>
+                        <button  onclick="aumentar(1, '<%= index %>')">+</button>
+                        <span class="Qtd<%= index %>">0</span>
+                        <button  onclick="aumentar(2, '<%= index %>')">-</button>
                     </td>
-                    <td><button type="button" class="btn" onclick="remove_item('<%= produto.prod_id %>')">Remove</button></td>
-                </tr></td>
+                    <td>
+                        <button type="button" class="btn" onclick="remove_item('<%= produto.prod_id %>')">Remover</button>
+                    </td>
+                </tr>
 
                 </tr>
-                <%
-                    total += parseFloat(produto.prod_qtd) * parseFloat(produto.prod_preco);           
-                %>
+                <!-- <%
+                    total += produto.prod_qtd * produto.prod_preco;           
+                %> -->
             <% }); %>
             <tr>
                 <td colspan="3" aling="right"><b>Total</b></td>
-                <td><%= total %> <span id="total"></span></td>
+                <td><span class="total">0</span></td>
                 <td>&nbsp;</td>
-            </tr >                            
+            </tr >
+            <tr>
+                <td  aling="center" colspan="4">
+                    <button type="submit" class="btn_compra">Comprar</button>
+                </td>
+            </tr>
+        <%}
+        else
+            { %>
+                <tr>
+                    <td colspan="5" align="center">Não há nada no carrinho</td>
+                </tr>
+                <%}%>
+            
+            
         </table>
     </main>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -32,18 +32,33 @@ header{
 }
 header nav {
     width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
 .asd{
-   width: 100%;
+    width: 100%;
     height: 50px;
-
+    border: solid 1px;
+    border-radius: 5px;
 }
 
 header nav img{
     width: 20%;
     height: 100% ;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.ajustes{
+    width: 200px;
+    color: orange;
+}
+.ajustes:hover{
+    background-color: #000916;
 }
 header nav input, ion-icon{
     float: left;
@@ -169,12 +184,13 @@ main .col6 img{
     height: 100%;
 }
 .product-box {
-    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 4px;
-    width: 100%;
-  
-    margin-top: 20px;
-    text-align: left;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow:-1px 0 0.4em rgb(0, 0, 0);
 }
 
 .product-box p {
@@ -185,6 +201,7 @@ main .col6 img{
     padding: 0;
     margin: 40px;
     list-style-type: none;
+    text-align: left;
 }
 .product-box ul li{
     padding: 9px;
@@ -197,6 +214,11 @@ main .col6 img{
     width: 1em;
     margin-left: -1em;
 }
+.product-box .slideshow-container{
+    width: 50%;
+    margin-top: 2%;
+
+}
 
 .Log{
     float: right;
@@ -207,6 +229,7 @@ main .col6 img{
     background:linear-gradient(to bottom, #154ca5 40%,rgb(0, 0, 0) );
     color: white;
     border-radius: 4%;
+    margin-right:100px;
 
 }
 .Log form input{
@@ -244,21 +267,34 @@ main .col6 img{
     margin-bottom: 5px;
 }
    
-.btne{
+.btn{
     background-color: dodgerblue;
     border: none;
     padding: 15px;
-    width: 55%;
     border-radius: 10px;
     color: white;
     font-size: 15px;
     height: 50px;
     margin-bottom: 10px;
+    width: 54%;
     
 }
 .btn:hover{
     background-color: deepskyblue;
     cursor: pointer;
+}
+.btn_compra{
+    background: linear-gradient(to bottom, #FFA500, #FF8C00);
+    border: none;
+    padding: 15px;
+    border-radius: 2px;
+    width: 20%;
+}
+.btn_compra:hover{
+    cursor: pointer;
+    color: black;
+    background: linear-gradient(to bottom, #FFFF00, #FFD700);
+
 }
 .container {
     float: left;
@@ -282,7 +318,7 @@ section button {
     float: right;
 }
 .slideshow-container {
-    position: relative;
+
     width: 100%;
     margin: 0 auto;
 }
@@ -327,7 +363,10 @@ footer li:visited{
     justify-content: center;
 }
 .table{
-    width: 60%;
+    width: 70%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-top: 20px;
 }
 .table tr{
     width: 100%;
@@ -338,11 +377,86 @@ footer li:visited{
     justify-content: space-around;
     gap:20px;
     margin-top: 30px;
+    
+}
+.carrinho{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     color: black;
-    box-shadow:-1px 0 0.4em #042457;
+    
     border-radius: 10px;
+}
+.carrinho td{
+    width: 20%;
 }
 .table img{
     width: 200px;
+}
+.table span{
+    width: 9%;
+    display: inline-block;  
+}
+.table button{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+.table button:hover{
+    background-color: #faea05;
+}
+.table .btn_compra{
+    width: 100%;
+}
+.perfil{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow:-1px 0 0.4em rgb(0, 0, 0);
+}
+.perfil div{
+    width: 33%;
+}
+.perfil input{
+    border: solid rgb(162, 12, 199) 1px;
+    border-radius: 6px;
+    padding: 15px;
+    width: 50%;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.perfil .dados{
+    padding: 0;
+    margin: 40px;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+}
+.dados button{
+   position: relative;
+   right: 30px;
+}
+.dados ul li{
+    padding: 9px;
+    list-style-type: none;
     
+}
+.dados ul li::before {
+    content: "\2022";
+    color: #008cba;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.alterar_senha{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 300px;
+    box-shadow:-1px 0 0.4em rgb(0, 0, 0);
+}
+.perfil button{
+    width: 56%;
 }

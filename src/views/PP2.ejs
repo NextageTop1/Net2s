@@ -21,55 +21,64 @@
         </nav>
         <nav>
         <% if (!usuario) { %>
-           <a href="log.html"><img src="fotos/login.png" alt="" id="login"></a>
+           <a href="/login"><img src="fotos/login.png" alt="" id="login"></a>
         <% } else { %>
-            <h1><a href="/perfil"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a></h1>
+            <a href="/perfil" class="ajustes"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a>
+            <a href="/carrinho" class="ajustes"><ion-icon class="asd" name="cart-outline"></ion-icon></a>
          <% } %>
-        </nav>  
+        </nav>
     </header>
     <main>
-        <div class="col3">
-                <h1>Tênis Nike Air Max SC Masculino - Azul</h1>
-                <div class="product-box">
+        <section>
+            <div class="product-box">
+                
+                <div >
+                    <h1>Tênis Nike Air Max SC Masculino - Azul</h1>
                     <p><strong>Detalhes do Produto:</strong></p>
                     <ul>
                         <li><strong>Indicado para:</strong> Esportes de salto</li>
                         <li><strong>Altura do Cano:</strong> Cano Baixo</li>
                         <li><strong>Material:</strong> Têxtil</li>
-                       <li><strong>Composição:</strong> Cabedal: Têxtil e sintético. Entressola: EVA. Solado: Borracha Micro G.</li>
+                        <li><strong>Composição:</strong> Cabedal: Têxtil e sintético. Entressola: EVA. Solado: Borracha Micro G.</li>
                         <li><strong>Peso do Produto:</strong> 310 g (O peso do produto varia de acordo com a numeração)</li>
                         <li><strong>Tecnologia:</strong> Micro G</li>
                     </ul>
+                    <form action="/add-carrinho" method="POST">
+                        <input type="hidden" name="idProduto" value="3">
+                        <input type="hidden" name="caminhoprod" value="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom1.png" alt="Slide 1">
+                        <button type="submit" class="btn_compra"  > add cart</button>
+                    </form>
+                    <h2>R$450.00</h2>
                 </div>         
-                <h2>R$450.00</h2>
-                <form action="/add-carrinho" method="POST">
-                    <input type="hidden" name="idProduto" value="3">
-                    <input type="hidden" name="caminhoprod" value="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom1.png" alt="Slide 1">
-                    <button type="submit" class="btn"  > add cart</button>
-                </form>
-        </div>
-        <div class="col6">
-            <div class="slideshow-container">
-                <div class="slide fade">
-                    <img src="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom1.png" alt="Slide 1">
+                
+             
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <img src="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom1.png" alt="Slide 1">
+                    </div>
+                    <div class="slide fade">
+                        <img src="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom2.png" alt="Slide 2">
+                    </div>
                 </div>
-                <div class="slide fade">
-                    <img src="tenis/Tênis Nike Air Max SC Masculino - Azul/JD8-4470-008_zoom2.png" alt="Slide 2">
-                </div>
+                    
             </div> 
-        </div>
+        </section>
     </main>
-    <section>
-        <div class="col8">
-            <form method="POST" class="formLogin">
-                <h1>CEP</h1>
-                <label for="number"></label>
-                <input type="number" placeholder="Digite seu CEP" autofocus="true"/>
-                <input type="submit" value="Calcular" class="btn" />
-            </form>
-        </div>    
-    </section>
-    
-<script src="script.js"></script>
+    <footer>
+        <div>
+             <ul>
+                <li><a href="manun.html">Sobre nós</a> </li>
+                <li><a href="manun.html">Parceiros</a> </li>
+                <li><a href="manun.html">Contato</a> </li>
+                <li><a href="manun.html">Ajuda</a> </li>
+            </ul>
+        </div>
+        <div>
+            &copy; 2023 Net2S. Todos os direitos reservados.
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

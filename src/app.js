@@ -207,41 +207,48 @@ app.get('/carrinho', async(req , res) => {
 })
 
 app.post('/add-carrinho', async(req,res)=>{
-  req.session.imgProduto = []
-  req.session.imgProduto.push(req.body.caminhoprod)
+
   if(!req.session.carrinho){ 
     req.session.carrinho = []
   }
-  var produto = req.body.idProduto || '';
+  var produtoBusca = req.body.idProduto || '';
   const carrinho = req.session.carrinho || [];
-  console.log(produto)
   const produtoQuery = 'SELECT * FROM produto WHERE prod_id = ?'
   const results =  await new Promise((resolve, reject) => {
-  connection.query(produtoQuery,produto,(err, results) => {
+  connection.query(produtoQuery,produtoBusca,(err, results) => {
     if (err) {
       reject(err);
       return;
     }
-    resolve(produto = results[0])
+    resolve(produtoBusca = results[0])
   })
 })
+  produto = {
+    prod_id:produtoBusca.prod_id,
+    prod_nome:produtoBusca.prod_nome,
+    imgProduto:produtoBusca.img_produto,
+    prod_preco:produtoBusca.prod_preco,
+    prod_descricao: produtoBusca.prod_descricao,
+    prod_qtd:produtoBusca.prod_qtd,
+    quantidade: 1
+  }
   req.session.carrinho.push(produto)
-  res.redirect('/carrinho?caminho = caminhoprod')
+  res.redirect('/carrinho?')
 })
-// app.get('/remove_item',(req , res ) =>{
-//   const prod_id = req.query.prod_id;
+app.get('/remove_item',(req , res ) =>{
+  const prod_id = req.query.prod_id;
 
-// 	for(let i = 0; i < req.session.cart.length; i++)
-// 	{
-// 		if(request.session.cart[i].product_id === product_id)
-// 		{
-// 			request.session.cart.splice(i, 1);
-// 		}
-// 	}
+	for(let i = 0; i < req.session.carrinho.length; i++)
+	{
+		if(req.session.carrinho[i].product_id === prod_id)
+		{
+			req.session.carrinho.splice(i, 1);
+		}
+	}
 
-// 	response.redirect("/");
+	res.redirect("/carrinho");
 
-// })
+})
 app.post('/redef', async (req, res) => {
     const usuario = req.session.usuario;
     const novoNome = req.body.nome;

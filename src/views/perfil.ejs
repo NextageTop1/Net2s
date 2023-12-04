@@ -10,48 +10,60 @@
 <body>
     <header>
         <nav>
-            <a class="col4" href="/"><img src="fotos/Design sem nome (3).png" alt=""></a>
-        </nav>
-        <nav class="div2">
-            <h1>Bem Vindo,<%= usuario.usu_nome%></h1>
+            <a href="/"><img src="fotos/Design sem nome (3).png" alt=""></a>
         </nav>
         <nav>
+            <p>Bem vindo, <%=usuario.usu_nome %>!</p>
+        </nav>
+        <nav>
+        <% if (!usuario) { %>
+           <a href="/login"><img src="fotos/login.png" alt="" id="login"></a>
+        <% } else { %>
+            <a href="/perfil" class="ajustes"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a>
+            <a href="/carrinho" class="ajustes"><ion-icon class="asd" name="cart-outline"></ion-icon></a>
+         <% } %>
+        </nav>
     </header>
-    <section class="product-box"> 
-        <ul>
-            <form action="/redef" method="post">
-            <li><strong>Nome:</strong> <input type="text" name="nome" placeholder="<%=usuario.usu_nome %>"></li>
-            <li><strong>Telefone:</strong> <%= usuario.telefone %></li>
-            <li><strong>Email:</strong> <%= usuario.usu_email %></li>
-            <li><strong>Permissão:</strong> <%= usuario.usu_permissao %></li>
-            <li><strong>Endereço de Cobrança:</strong> <%= usuario.usu_end_cobranca %></li>
-            <li><strong>Endereço de Entrega:</strong> <%= usuario.usu_end_entrega %></li>
-                <button type="submit" class="">redefinir</button>
-            </form>
-        </ul>
-        <main>
-            <% if (erro) { %>
-                <p style="color: red;"><%= erro %></p>
-            <% } %>
-            <form action="/alterar-senha" method="post">
-                <label for="senhaAtual">Senha Atual:</label>
-                <input type="password" id="senhaAtual" name="senhaAtual" required>
-    
-                <label for="novaSenha">Nova Senha:</label>
-                <input type="password" id="novaSenha" name="novaSenha" required>
-    
-                <button type="submit" class="btn btn-success">Alterar Senha</button>
-            </form>
-        </main>
-
-        <form action="/logout" method="get">
-            <button type="submit">Log Out</button>
-        </form>
-        <form action="/excluir-conta" method="post">
-            <button type="submit" class="btn">Excluir Conta</button>
-        </form>
-    </section>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+    <main>
+        <section class="perfil"> 
+            <div class="dados">
+                <ul>
+                    <form action="/redef" method="post">
+                        <li><strong>Nome:</strong> <input type="text" name="nome" placeholder="<%=usuario.usu_nome %>"></li>
+                        <li><strong>Telefone:</strong> <%= usuario.telefone %></li>
+                        <li><strong>Email:</strong> <%= usuario.usu_email %></li>
+                        <li><strong>Permissão:</strong> <%= usuario.usu_permissao %></li>
+                        <li><strong>Endereço de Cobrança:</strong> <%= usuario.usu_end_cobranca %></li>
+                        <li><strong>Endereço de Entrega:</strong> <%= usuario.usu_end_entrega %></li>
+                        <button type="submit" class="btn_compra">redefinir</button>
+                    </form>
+                </ul>
+            </div>
+            <div class="alterar_senha">
+                <% if (erro) { %>
+                    <p style="color: red;"><%= erro %></p>
+                <% } %>
+                <form action="/alterar-senha" method="post">
+                    <input type="password" id="senhaAtual" name="senhaAtual" placeholder="Senha atual" required>
+                    <br>
+                    <input type="password" id="novaSenha" name="novaSenha" placeholder="Nova senha"  required>
+        
+                    <button type="submit" class="btn btn-success">Alterar Senha</button>
+                </form>
+            </div>
+            <div>
+                <form action="/logout" method="get">
+                    <button type="submit" class="btn">Log Out</button>
+                </form>
+                <form action="/excluir-conta" method="post">
+                    <button type="submit" class="btn_compra">Excluir Conta</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 

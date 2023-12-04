@@ -15,7 +15,7 @@
             <div class="formulario">
                 <form action="">
                     <input type="text" placeholder="O que você procura?" id="pesquisa">
-                    <i class="bi bi-search"></i>
+                    <ion-icon name="search-outline"></ion-icon>
                 </form>
             </div>
         </nav>
@@ -23,55 +23,60 @@
         <% if (!usuario) { %>
            <a href="/login"><img src="fotos/login.png" alt="" id="login"></a>
         <% } else { %>
-            <h1><a href="/perfil"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a></h1>
+            <a href="/perfil" class="ajustes"><ion-icon class="asd" name="person-circle-outline"></ion-icon></a>
+            <a href="/carrinho" class="ajustes"><ion-icon class="asd" name="cart-outline"></ion-icon></a>
          <% } %>
         </nav>
-        
     </header>
     <main>
-        <div class="col3">
-                <h1>Tênis Under Armour Basquete Spawn 3 Masculino</h1>
-                <div class="product-box">
+        <section >
+            <div class="product-box">
+                <div>
+                    <h1>Tênis Under Armour Basquete Spawn 3 Masculino</h1>
                     <p><strong>Detalhes do Produto:</strong></p>
                     <ul>
                         <li><strong>Indicado para:</strong> Dia a Dia</li>
                         <li><strong>Altura do Cano:</strong> Cano Baixo</li>
                         <li><strong>Material:</strong> Têxtil</li>
-                       <li><strong>Composição:</strong> Cabedal: Têxtil e sintético. Entressola: EVA. Solado: Borracha Micro G.</li>
+                        <li><strong>Composição:</strong> Cabedal: Têxtil e sintético. Entressola: EVA. Solado: Borracha Micro G.</li>
                         <li><strong>Peso do Produto:</strong> 310 g (O peso do produto varia de acordo com a numeração)</li>
                         <li><strong>Tecnologia:</strong> Micro G</li>
                     </ul>
+                                        
+                    <form action="/add-carrinho" method="POST">
+                        <input type="hidden" name="idProduto" value="1">
+                        <input type="hidden" name="caminhoprod" value="tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom1.jpg">
+                        <button type="submit" class="btn_compra"  > add cart</button>
+                    </form>
+                        <h2>RS299.00</h2> 
                 </div>         
-                <h2>RS299.00</h2> 
-                <form action="/add-carrinho" method="POST">
-                    <input type="hidden" name="idProduto" value="1">
-                    <input type="hidden" name="caminhoprod" value="tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom1.jpg">
-                    <button type="submit" class="btn"  > add cart</button>
-                </form>
                 
-                
-        </div>
-        <div class="col6">
-            <div class="slideshow-container">
-                <div class="slide fade">
-                    <img src="tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom1.jpg" alt="Slide 1">
-                </div>
-                <div class="slide fade">
-                    <img src="tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg" alt="Slide 2">
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <img src="tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom1.jpg" alt="Slide 1">
+                    </div>
+                    <div class="slide fade">
+                        <img src="tenis/Tênis Under Armour Basquete Spawn 3 Masculino/39W-3127-026_zoom3.jpg" alt="Slide 2">
+                    </div>
                 </div>
             </div> 
-        </div>
-        <section>
-        <div class="col8">
-            <form method="POST" class="formLogin">
-                <h1>CEP</h1>
-                <label for="number"></label>
-                <input type="number" placeholder="Digite seu CEP" autofocus="true"/>
-                <input type="submit" value="Calcular" class="btn" />
-            </form>
-        </div>    
-    </section> 
+        </section> 
     </main>
-<script src="script.js"></script>
+    <footer>
+        <div>
+             <ul>
+                <li><a href="manun.html">Sobre nós</a> </li>
+                <li><a href="manun.html">Parceiros</a> </li>
+                <li><a href="manun.html">Contato</a> </li>
+                <li><a href="manun.html">Ajuda</a> </li>
+            </ul>
+        </div>
+        <div>
+            &copy; 2023 Net2S. Todos os direitos reservados.
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
