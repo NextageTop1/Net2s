@@ -49,7 +49,7 @@ function aumentar(x, index) {
 }
 function remove_item(item_id)
 {
-    if(confirm("Are you sure you want to remove it?"))
+    if(confirm("Certeza?"))
     {
         window.location.href = `/remove_item?id=${item_id}`;
     }
