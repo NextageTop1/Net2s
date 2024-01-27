@@ -1,15 +1,11 @@
 
 const express = require('express');
 const app = express();
-// const mysql = require('mysql2');
+const mysql = require('mysql2');
 const path = require('path');
 
 const session = require('express-session'); // Adicione esta linha
 const flash = require('connect-flash')
-
-require('dotenv/config');
-
-const db = require('./db')
 
 const bcrypt = require('bcrypt') 
 
@@ -28,21 +24,20 @@ app.use(session({
     saveUninitialized: true
     // Você pode adicionar outras opções conforme necessário
 }));
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'net2s',
-// });
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'net2s',
+});
 
-
-// connection.connect((err) => {
-//     if (err) {
-//         console.error('Erro' + err.stack);
-//         return;
-//     }
-//     console.log('Conexao bem ' + connection.threadId);
-// });
+connection.connect((err) => {
+    if (err) {
+        console.error('Erro' + err.stack);
+        return;
+    }
+    console.log('Conexao bem ' + connection.threadId);
+});
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));  // Corrigido: Importe o módulo path
@@ -50,17 +45,19 @@ app.set('views', path.join(__dirname, 'views'));  // Corrigido: Importe o módul
 
 app.use(express.static(path.join(__dirname,'../public')))
 
-app.get('/', async (req, res) => {
-  
+app.get('/', (req, res) => {
+  connection.query('SELECT * FROM usuario', (err, results, fields) => {
+      if (err) {
+          console.error('Erro na consulta:', err.stack);
+          res.status(500).send('Erro');
+          return;
+      }
       console.log(req.session.usuario)
       const usuario = req.session.usuario
       res.render('index',{ options: results, usuario });
   });
-app.get('/2', async (req, res) => {
-  const results = await db.SELECT_usu()
-
-  res.render('index2', {results})
-
+// app.get('/', (req, res) => {
+//   res.render('index')
 })
 
 
@@ -363,7 +360,6 @@ app.post('/alterar-senha', async (req, res) => {
 });
 
 
-
-app.listen(process.env.PORT, () => {
+app.listen(3000, () => {
     console.log("Funcionando");
 });
