@@ -15,7 +15,8 @@
     "nodemon": "^3.0.1"
   },
   "scripts": {
-    "start": "npx nodemon app"
+    "start": "npx nodemon src/app",
+    "dev": "nodemon app"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2"

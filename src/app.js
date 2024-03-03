@@ -10,7 +10,8 @@ const flash = require('connect-flash')
 const bcrypt = require('bcrypt') 
 
 const bodyParser = require('body-parser')
-const rd = require('node:crypto')
+const rd = require('node:crypto');
+const { template } = require('lodash');
 
 //Crypitografia
 // const crypto = require('crypto');
@@ -64,6 +65,23 @@ app.get('/', (req, res) => {
 app.get('/formUsuario', (req, res) => {
   res.render('formUsuario');
 });
+
+app.get('/teste', (req, res) =>{
+  produtos = connection.query('SELECT * FROM produto', async (err, results, fields) => {
+    if (err) {
+      console.error('Erro na consulta:', err.stack);
+      res.status(500).send('Erro');
+      return;
+  }
+  produtos = await results
+  produtos.forEach(element => {
+    console.log(element.img_produto)
+  });
+  const usuario = req.session.usuario
+  res.render('template', { options: produtos, usuario })
+
+})
+})
 
 app.get('/usuario', (req, res) => {
   const usuId = req.query.usu_id;
